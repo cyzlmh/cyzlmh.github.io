@@ -16,17 +16,25 @@
 title: cyzlmh's blog
 email: cyzlmh@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  An experimental blog\玩一玩
+  An experimental blog/玩一玩
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-github_username:  cyzlmh
+github_username: cyzlmh
+header_pages:
+  - blog.md
+  - notes.md
+  - about.md
+  - contact.md
 
 # Build settings
 markdown: kramdown
 #theme: minima
 plugins:
   - jekyll-feed
-
+  - jekyll-toc
+toc:
+  min_level: 1 # default: 1
+  max_level: 3 # default: 6
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.

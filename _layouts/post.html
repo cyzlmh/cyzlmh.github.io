@@ -19,6 +19,10 @@ layout: default
     {{ content }}
   </div>
 
+  <div class="side-toc">
+    {{ content | toc_only}}
+  </div>
+
   {% if site.disqus.shortname %}
     {% include disqus_comments.html %}
   {% endif %}

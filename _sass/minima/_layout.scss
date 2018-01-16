@@ -138,6 +138,7 @@
 .footer-col-1 {
   width: -webkit-calc(33% - (#{$spacing-unit} / 2));
   width:         calc(33% - (#{$spacing-unit} / 2));
+  text-align: left;
 }
 
 .footer-col-2 {
@@ -226,6 +227,9 @@
 
 .post-content {
   margin-bottom: $spacing-unit;
+  float: left;
+  width: -webkit-calc(70% - (#{$spacing-unit} / 2));
+  width:         calc(70% - (#{$spacing-unit} / 2));
 
   h2 {
     @include relative-font-size(2);
@@ -251,3 +255,5 @@
     }
   }
 }
+
+

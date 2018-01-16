@@ -213,3 +213,42 @@ pre {
     padding-top: 5px;
   }
 }
+
+
+
+/**
+ * Tables
+ */
+table {
+  border-left:1px solid #000000;
+  border-top:1px solid #000000;
+  width: 100%;
+  word-wrap:break-word;
+  word-break:break-all;
+}
+table th {
+  text-align:center;
+}
+table th, td {
+  border-right:1px solid #000000;
+  border-bottom:1px solid #000000;
+}
+
+
+
+/**
+ * TOC
+ */
+.section-nav {
+  background-color: #FFF;
+  margin: 5px 0;
+  padding: 10px 30px;
+  border: 1px solid #E8E8E8;
+  border-radius: 3px;
+}
+.side-toc {
+  float: right;
+  position: relative;
+  width: -webkit-calc(30% - (#{$spacing-unit} / 2));
+  width:         calc(30% - (#{$spacing-unit} / 2));
+}
