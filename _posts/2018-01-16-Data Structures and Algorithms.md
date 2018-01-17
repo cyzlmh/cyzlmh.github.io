@@ -2,10 +2,12 @@
 layout: post
 title:  "Data Structures and Algorithms"
 date:   2018-01-16 00:00:00 +0800
-categories: other
-toc: true
+categories: post
+tag: Python
 ---
 
+* TOC
+{:toc}
 
 # Motive
 
@@ -260,7 +262,7 @@ CPU的一次计算：32位/64位整数的一次加减
 
 ![perfect_binary_tree](/assets/Data Structures and Algorithms/complete_binary_tree.png)
 
-#### Implementation
+### Implementation
 
 类似链表的实现，每个结点储存数据和左右子结点的指针
 
@@ -274,7 +276,7 @@ class _BinTreeNode:
 
 
 
-#### Traversal
+### Traversal
 
 **Preorder Traversal**
 
@@ -318,7 +320,7 @@ def preorder_trav(subtree):
 
 ![breath_first_traversal](/assets/Data Structures and Algorithms/breath_first_traversal.png)
 
-###Heap
+### Heap
 
 按照结点储存的值的大小来排列的complete binary tree
 
@@ -336,7 +338,7 @@ def preorder_trav(subtree):
 
 ![heap_extract](/assets/Data Structures and Algorithms/heap_extract.png)
 
-###Binary Search Tree
+### Binary Search Tree
 
 搜索树指每个结点包含一个键-值对，结点根据键的值来组织
 
@@ -382,7 +384,7 @@ def preorder_trav(subtree):
 
 ![binary_search_tree_efficiency](/assets/Data Structures and Algorithms/binary_search_tree_efficiency.png)
 
-###AVL Tree
+### AVL Tree
 
 平衡的搜索二叉树。不平衡的二叉搜索树导致在最差的情况下会成为类似链表导致搜索效率下降，平衡二叉树在每次插入或删除时对树进行再平衡，保证搜索效率。
 
@@ -424,34 +426,34 @@ def preorder_trav(subtree):
 
 ![2-3_tree](/assets/Data Structures and Algorithms/2-3_tree.png)
 
-### Graph
+## Graph
 
 <!--待续-->
 
-## Search & Sorting
+# Search & Sorting
 
-### Search
+## Search
 
-#### Linear search
+### Linear search
 
 遍历数据中各元素只到找到目标
 
 - 时间复杂度为O(n)
 
-#### Binary search
+### Binary search
 
 适用于有序序列
 
 - 时间复杂度为O(log n)
 
-#### Hash table
+### Hash table
 
 将一个序列用一个函数或表映射至一个长度有限的数集中[1, 2, ..., n]，在查找时直接读取array[k]的元素，若存在则查找成功，否则则为失败
 
 - *例子*：将序列[103, 116, 133, 107, 101, 155, 105, 118, 134]通过函数$h(key)=key\ mod\ M$映射至长度为M的array中
 - 当load factor在1/3到2/3之间时，hash操作平均时间为$O(1)$
 
-##### Probing
+#### Probing
 
 - Linear probing：当发生碰撞（collision）时，元素按顺序向后插入。查找时顺序向后查找，直到遇到空值，说明查找失败。
 
@@ -490,7 +492,7 @@ def preorder_trav(subtree):
   - 可以同时减少primary clustering和secondary clustering，在解决碰撞时最为常用
   - 表的长度应为质数
 
-##### Rehashing
+#### Rehashing
 
 当表的元素增加、可用空间越来越少时，需要重新生成新的、更长的表，并对所有元素重新hash，这个过程叫作rehash。
 
@@ -500,11 +502,11 @@ def preorder_trav(subtree):
 - load factor在2/3以下效率较高，超过该值一般需要rehash
 - 新生成的表的长度一般为$2M+1$，$M$为原表长度
 
-#####Seperate Chaining
+#### Seperate Chaining
 当不同元素在表中发生碰撞时，让这些元素共用这一个位置，并用链表将他们连接起来
 ![seperate_chaining](/assets/Data Structures and Algorithms/seperate_chaining.png)
 
-#####Hash Functions
+#### Hash Functions
 Hash functions的意思是将数据的搜索匙的集合映射至长度一定的整数下标中，常用的hash function有：
 
 - Division/取余：$h(key)=key\ \%\ M$
@@ -512,9 +514,9 @@ Hash functions的意思是将数据的搜索匙的集合映射至长度一定的
 - Folding：将key分成多个部分再加/乘起来，例如将4873152分成48、731、52再加起来得831
 - Hashing Strings：将各个字符转化为ASCII码，再相加，或用多项式相加
 
-### Sorting
+## Sorting
 
-####Bubble Sort
+###  Bubble Sort
 
 依次对比相邻两个元素，将较大者交换至后面，这样一轮之后可以保证最后一个元素为最大值，对前面n-1个元素进行相同操作，直至排序完成。
 
@@ -528,7 +530,7 @@ def bubble_sort(ls):
     return ls
 ```
 
-####Selection Sort
+### Selection Sort
 
 每轮挑选未排序序列中的最小值排至队首，重复操作直至排序结束。
 
@@ -546,7 +548,7 @@ def selection_sort(ls):
     return ls
 ```
 
-####Insertion Sort
+### Insertion Sort
 
 选取未排序序列中的第一个元素，将其与排好序的序列中逐个元素对比以确定取所对应的位置，将其插入位置，重复操作直至排序结束。
 
@@ -593,7 +595,7 @@ print(ls)
 
 
 
-####Merge Sort
+### Merge Sort
 
 将序列从中间分为两半，对两部分调用递归排序，再将两个排好序的子序列合并。是典型的分治法
 
@@ -654,7 +656,7 @@ def merge_sort(ls):
         return merge(sorted_ls_1, sorted_ls_2)
 ```
 
-#### Quick Sort
+### Quick Sort
 
 选择某个元素的值来分割序列，将较该值小的元素与较该值大的元素分成两个子序列，分别对其进行递归排序。由于两个子序列有大小之分，在合并时只需直接链接即可。
 
@@ -681,7 +683,7 @@ def quick_sort_2(ls):
     pass
 ```
 
-####Heap Sort
+### Heap Sort
 
 新建一个max-heap，将序列一个一个插入到heap中，再将heap的根元素一个一个取出来并按顺序排列，即得到排序后序列
 
@@ -699,7 +701,7 @@ def quick_sort_2(ls):
 
 
 
-##Algorithms
+# Algorithms
 
 - 蛮力法/枚举法/Brute force
 - 贪心法/Greedy algorithm

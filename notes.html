@@ -1,0 +1,56 @@
+---
+layout: default
+title: Notes
+header: Notes List
+---
+
+{% assign array_tags = "" %}
+{% for page in site.pages %}
+  {% assign urllist = page.url | split: "/"%}
+    {% if urllist[1] == "my-notes" %}
+	  {% assign array_tags = array_tags | append: page.tags | append: ", " %}
+    {% endif %}
+{% endfor %}
+
+{% assign tags = array_tags | split: ", " | uniq %}
+
+<div class="container docs-container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+        	<h1>Notes</h1>
+			<ul class="nav sidenav">
+			  {% for tag in tags %}
+			    <li><a href="#{{ tag }}-ref">{{ tag | join: "/" }}</a></li>
+			  {% endfor %}
+          	</ul>
+			<img height="200px" width="200px" src="{{ '/styles/images/anim.gif' | prepend: site.baseurl }}" alt="x"/>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9" role="main">
+      <div class="panel docs-content">
+        <div class="wrapper">
+          <div class="home">
+		    {% for tag in tags %}
+			  <h2 id="{{ tag }}-ref">{{ tag | join: "/" }}</h2>
+			  <ul>
+			  {% for page in site.pages %}
+				{% if page.tags == tag %}
+				  {% assign urllist = page.url | split: "/"%}
+				  {% if urllist[1] == "my-notes" %}
+				    <ol class="breadcrumb">
+					<li class="active"><a href="{{ page.url | prepend: site.baseurl }}" class="active">{{ page.title }}</a></li>
+					</ol>
+				  {% endif %}
+				{% endif %}
+			  {% endfor %}
+			  </ul>
+			{% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

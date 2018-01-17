@@ -1,31 +1,15 @@
 <!DOCTYPE html>
-
 <html>
 
-    {% include head.html %}
+  {% include head.html %}
 
-    <body>
-        {% include header.html %}
-		<div class="container theme-showcase" role="main">
+  <body class="index">
 
-		  <!-- Main jumbotron for a primary marketing message or call to action -->
-		  <div class="jumbotron">
-			<h1>Theme example</h1>
-			<p>This is a template showcasing the optional theme stylesheet included in Bootstrap. Use it as a starting point to create something more unique by building on or modifying it.</p>
-		  </div>
-	    </div>
-        <main class="page-content">
-            <div class="wrapper">
-                {{ content }}
-            </div>
-        </main>
+    {% include header.html %}
 
-        {% include footer.html %}
-    
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="{{ "/bootstrap-3.3.7-dist/js/bootstrap.min.js" | relative_url }}"></script>
-	</body>
+    {{ content }}
 
+    {% include footer.html %}
+
+  </body>
 </html>

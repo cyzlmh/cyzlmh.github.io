@@ -1,48 +1,28 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-
 # Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-title: cyzlmh's blog
+name: cyzlmh's blog
 email: cyzlmh@gmail.com
-description: >- # this means to ignore newlines until "baseurl:"
-  An experimental blog/玩一玩
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+author: cyzlmh
+url: ""
+resume_site: http://www.hifreud.com/Resume.io/
+github: https://github.com/cyzlmh/
+baseurl: ""
+description: An experimental blog
+meta_description: 玩一玩
+motto: 让我此生唯一自传，如同诗一般
+banner: /
+
+#permalink: /:categories/:year/:month/:day/:title/
+permalink: /:categories/:title/
+paginate: 10
+
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
+
 github_username: cyzlmh
-header_pages:
-  - blog.md
-  - notes.md
-  - about.md
-  - contact.md
 
 # Build settings
 markdown: kramdown
-#theme: minima
+
+#baidu_analysis: 94be4b0f9fc5d94cc0d0415ea6761ae9
+
 plugins:
-  - jekyll-feed
-  - jekyll-toc
-toc:
-  min_level: 1 # default: 1
-  max_level: 3 # default: 6
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+  - jekyll-paginate
