@@ -7,7 +7,7 @@ header: Notes List
 {% assign array_tags = "" %}
 {% for page in site.pages %}
   {% assign urllist = page.url | split: "/"%}
-    {% if urllist[1] == "my-notes" %}
+    {% if urllist[1] == "notes" %}
 	  {% assign array_tags = array_tags | append: page.tags | append: ", " %}
     {% endif %}
 {% endfor %}
@@ -39,7 +39,7 @@ header: Notes List
 			  {% for page in site.pages %}
 				{% if page.tags == tag %}
 				  {% assign urllist = page.url | split: "/"%}
-				  {% if urllist[1] == "my-notes" %}
+				  {% if urllist[1] == "notes" %}
 				    <ol class="breadcrumb">
 					<li class="active"><a href="{{ page.url | prepend: site.baseurl }}" class="active">{{ page.title }}</a></li>
 					</ol>

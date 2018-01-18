@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Data Structures and Algorithms"
+title:  "[读书笔记]Data Structures and Algorithms"
 date:   2018-01-16 00:00:00 +0800
 categories: post
 tag: Python
@@ -712,7 +712,9 @@ def quick_sort_2(ls):
 - 分治法/Divide-and-conquer
   - 对于一个规模为n的问题，可以分为a个规模为n/b的子问题，合并这些子问题需要O(n^d)时间，那么用分治法解决该问题的时间可以表示为：
     $T(n)=aT([n/b])+O(n^d)$
-    ![master_theorem](/assets/Data Structures and Algorithms/master_theorem.png)
+
+![master_theorem](/assets/Data Structures and Algorithms/master_theorem.png)
+
   - *代表*：merge sort/quick sort，将序列分解成两个子序列，分别排序后再合并，用递归实现
   - *例题*：《Algorithms》P60-Medians
 - 动态规划/Dynamic programming

@@ -1,6 +1,6 @@
 ---
-layout: post
-title: Note-SQL
+layout: page
+title: SQL
 category: note
 tags: Others
 ---

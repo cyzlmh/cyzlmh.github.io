@@ -1,6 +1,6 @@
 ---
-layout: post
-title: Note-GIT
+layout: page
+title: GIT
 category: note
 tags: Others
 ---
@@ -8,7 +8,8 @@ tags: Others
 * content
 {:toc}
 
-# Initialize git
+
+# Initialize
 
 ```
 git init

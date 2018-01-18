@@ -1,6 +1,6 @@
 ---
-layout: post
-title: Note-Pandas
+layout: page
+title: Pandas
 category: note
 tags: Python
 ---
@@ -16,7 +16,9 @@ import pandas as pd
 from pandas import Series, DataFrame
 ```
 
-# Read from file
+# IO
+
+Read from file
 
 ```python
 df = pd.read_csv(filename, sep=',')
@@ -28,17 +30,11 @@ df = pd.read_fwf(filename,
                  names=['col1', 'col2', 'col3'])
 ```
 
-# Save to file
+Save to file
 
 ```python
 df.to_csv('path/filename')
 df.to_pickle('path/filename')
-```
-
-# Set index
-
-```python
-df.set_index(column, inplace=True)
 ```
 
 # Quick check
@@ -50,6 +46,14 @@ df.describe()
 ```
 
 # Indexing
+
+Set index
+
+```python
+df.set_index(column, inplace=True)
+```
+
+Indexing
 
 ```python
 df.label
@@ -64,19 +68,19 @@ df.ix['label']
 df.ix[i]
 ```
 
-# Select column
+Select column
 
 ```python
 df.loc[:,'lable']
 ```
 
-# Rename columns
+Rename columns
 
 ```python
 df.rename(columns={"old_name":"new_name"})
 ```
 
-# Shift index
+Shift index
 
 ```python
 # shift i row
@@ -105,7 +109,7 @@ df.groupby(col).mean()
 df.groupby([col1, col2]).mean()
 df.groupby(col).aggregate(['count', 'mean'])
 
-# find the min row of the group
+Find the min row of the group
 df.loc[df.groupby(['Serial_Num']).apply(lambda x: x['Distance'].idxmin())]
 ```
 
