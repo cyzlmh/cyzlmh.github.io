@@ -11,10 +11,12 @@ permalink: /books/
 2018 Reading List
 ---
 
+- 《重新定义公司》
 - 《浪潮之巅》《硅谷之谜》《智能时代》
 - 《腾讯传》
 - 《推荐系统实践》
 - 《Learning SQL》
+- 《大国大城》
 - 《三千佛塔烟云下--东南亚五国文化纪行》
 - 《Deep Learning with Python》
 - 《Hands-On Machine Learning with Scikit-Learn and TensorFlow》

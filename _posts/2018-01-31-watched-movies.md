@@ -77,3 +77,7 @@ tag: Movies
 ------
 
 最后，附上我所有的5星电影名单
+
+![watch_date_distribution](/assets/watched-movies/favorite_movies_1.png)
+
+![watch_date_distribution](/assets/watched-movies/favorite_movies_2.png)
