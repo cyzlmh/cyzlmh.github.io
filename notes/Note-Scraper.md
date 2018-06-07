@@ -170,6 +170,8 @@ for elem in elems:
     print(item.tag, item.text, item.get('attrib'))
 # get the text directly
 elems = page.xpath('//span[@class="className"]/text()')
+# position
+elems = page.xpath('//span[location()=1]')
 ```
 
 # Selenium

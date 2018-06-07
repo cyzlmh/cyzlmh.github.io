@@ -207,7 +207,7 @@ CPU的一次计算：32位/64位整数的一次加减
 - *is_empty()*：是否为空
 - *length()*：返回长度
 - *pop()*：删除并返回最上面的元素
-- *peek*：返回最上层元素但是不修改Stack
+- *peek()*：返回最上层元素但是不修改Stack
 - *push(item)*：添加一个元素至顶部
 
 ## Queue
@@ -330,7 +330,7 @@ def preorder_trav(subtree):
 
 **Insertion**
 
-时间复杂度为$O(log n)$
+时间复杂度为 $O(log n)$
 
 ![heap_insert](/assets/Data Structures and Algorithms/heap_insert.png)
 
@@ -422,7 +422,7 @@ def preorder_trav(subtree):
 
 ![AVL_tree_remove](/assets/Data Structures and Algorithms/AVL_tree_remove.png)
 
-###2-3 Tree
+### 2-3 Tree
 
 ![2-3_tree](/assets/Data Structures and Algorithms/2-3_tree.png)
 

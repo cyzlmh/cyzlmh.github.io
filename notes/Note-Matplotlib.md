@@ -68,6 +68,9 @@ plt.savefig('path/name.png')
 Legend & Label & Tick & Grid
 
 ```python
+# title
+ax.set_title('plot', fontsize=20)
+
 # label
 ax.set_xlabel('Threshold (m/s)')
 ax.set_ylabel('Strom periods (hours)')
@@ -85,6 +88,7 @@ ax.set_xlim(0, 1)
 # grid
 ax.grid(True)
 ax.grid(False)
+ax.yaxis.grid(True)
 
 # legend
 ax.legend(loc='lower left', frameon=False)

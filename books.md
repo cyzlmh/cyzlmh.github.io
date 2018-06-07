@@ -8,6 +8,22 @@ permalink: /books/
 {:toc}
 
 
+2018 Reading List
+---
+
+- 《浪潮之巅》《硅谷之谜》《智能时代》
+- 《腾讯传》
+- 《推荐系统实践》
+- 《Learning SQL》
+- 《三千佛塔烟云下--东南亚五国文化纪行》
+- 《Deep Learning with Python》
+- 《Hands-On Machine Learning with Scikit-Learn and TensorFlow》
+- 《Neural networks and deep learning》
+- 《从零开始学炒股》
+- 《金融战败》
+- 《人人都是产品经理》
+
+
 2017 Reading List
 ---
 
