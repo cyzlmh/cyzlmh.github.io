@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "[读书笔记]Data Structures and Algorithms"
+title:  "[笔记]Data Structures and Algorithms"
 date:   2018-01-16 00:00:00 +0800
 categories: post
-tag: Python
+tag: 笔记
 ---
 
 * TOC
