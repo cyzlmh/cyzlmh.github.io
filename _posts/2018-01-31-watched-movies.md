@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "这些年看过的电影"
-date:   2018-01-31 00:00:00 +0800
+date:   2018-02-04 00:00:00 +0800
 categories: post
 tag: Movies
 ---
@@ -78,6 +78,6 @@ tag: Movies
 
 最后，附上我所有的5星电影名单
 
-![watch_date_distribution](/assets/watched-movies/favorite_movies_1.png)
+![favorite_movies_1](/assets/watched-movies/favorite_movies_1.png)
 
-![watch_date_distribution](/assets/watched-movies/favorite_movies_2.png)
+![favorite_movies_2](/assets/watched-movies/favorite_movies_2.png)
