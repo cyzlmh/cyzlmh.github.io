@@ -104,3 +104,180 @@ tags: Others
 # File system
 
 ![File system](/assets/notes/Note-Linux/FileSystem.jpg)
+
+# vim
+
+| Command          | Result     |
+| ---------------- | ---------- |
+| i                | insert     |
+| :q               | 退出       |
+| :q!              | 不保存退出 |
+| :w               | 保存       |
+| :wq              | 保存退出   |
+| w                | 后跳一词   |
+| b                | 前跳一词   |
+| $                | 跳到行尾   |
+| 0                | 跳到行首   |
+| G                | 跳到尾行   |
+| 5G               | 跳到第5行  |
+| x                | 删除       |
+| d                | 剪切       |
+| dd               | 删除整行   |
+| y                | 复制       |
+| p                | 粘贴       |
+| /+*word*+<ENTER> | 查找       |
+| n                | 查找下一个 |
+
+
+
+# Shell Script
+
+```shell
+# 文件头
+#!/bin/bash
+
+# 定义变量
+var="a string" #等号两边不能有空格
+
+#调用变量
+echo $var
+echo ${var}
+
+#执行命令
+`cat some.txt`
+$(cat some.txt)
+
+# here document
+command <<- _EOF_
+	text
+_EOF_
+```
+
+## Function
+
+```shell
+function name {
+	commands
+	return
+}
+name () {
+	commands
+	return
+}
+
+# local variable
+function name {
+	local var
+	var=2
+	return
+}
+```
+
+# Branching and Looping
+
+## IF
+
+```shell
+x=5
+if [ $x -eq 5 ]; then
+	echo "x equals 5."
+elif [ $x -eq 4 ]; then
+	echo "x equals 4."
+else
+	echo "x does not equal 5 or 4."
+fi
+```
+
+### File test
+
+| Expression          | True                                                     |
+| ------------------- | -------------------------------------------------------- |
+| [ -e file ]         | file exists                                              |
+| [ -d file ]         | file exists and is a directory                           |
+| [ -f file ]         | file exists and is a regular file                        |
+| [ file1 -ef file2 ] | the two filenames refer to the same file by hard linking |
+
+### String test
+
+| Expression             | True                              |
+| ---------------------- | --------------------------------- |
+| [ string ]             | not null                          |
+| [ -n string ]          | The length is greater than zero   |
+| [ -z string ]          | The length is zero                |
+| [ string1 == string2 ] | equal                             |
+| [ string1 != string2 ] | not equal                         |
+| [ string1 > string2 ]  | string1 sorts after string2       |
+| [[ string =~ regex ]]  | matched by the regular expression |
+| [[ string == *.txt ]]  | matched by the expansion          |
+
+### Integer test
+
+```shell
+if ((INT < 0)); then
+	echo "here"
+elif (( ((INT % 2)) == 0)); then
+	echo "here"
+elif (( ((INT % 2)) == 0 && ((INT % 3)) == 0 )); then
+	echo "here"
+else
+	echo "here"
+fi
+```
+
+### Logit
+
+| Expression           | Logit |
+| -------------------- | ----- |
+| [[ exp1 && exp2 ]]   | and   |
+| [[ exp1 \|\| exp2 ]] | or    |
+| [[ ! exp1 ]]         | not   |
+
+```shell
+# do command2 if command1 is sucessful
+command1 && command2
+# do command2 if command1 is unsucessful
+command1 || command2
+```
+
+### Positional Paramaters
+
+- \$0：路径
+  - dirname \$0：路径名
+  - basename \$0：文件名
+- \$1~\$9：输入参数
+- \$?：上一次退出状态，0为正常，其他为错误
+
+## CASE
+
+```shell
+read -p
+case $REPLY in
+	0)	echo "zero"
+		;;
+	1)	echo "one"
+		;;
+	2)	echo "two"
+		;;
+	*)	echo "other"
+		;;
+esac
+```
+
+## WHILE
+
+```shell
+count=1
+while [[ $count -le 5 ]]; do 
+	echo $count 
+	count=$((count + 1)) 
+done
+```
+
+## FOR
+
+```shell
+for (( i=0; i<5; i=i+1 )); do 
+	echo $i
+done
+```
+

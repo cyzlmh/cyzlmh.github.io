@@ -572,7 +572,16 @@ ADD CONSTRAINT fk_product_type_cd FOREIGN KEY (product_type_cd)
  ON DELETE CASCADE;
 ```
 
+## SQL语句执行顺序
 
+1. FROM子句组装来自不同数据源的数据
+2. WHERE子句基于指定的条件对记录进行筛选
+3. GROUP BY子句将数据划分为多个分组
+4. 使用聚集函数进行计算
+5. 使用HAVING子句筛选分组
+6. 计算所有的表达式
+7. SELECT的字段
+8. 使用ORDER BY对结果进行排序
 
 # MondoDB
 
