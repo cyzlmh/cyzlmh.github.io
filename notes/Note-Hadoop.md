@@ -145,8 +145,12 @@ CREATE EXTERNAL TABLE IF NOT EXISTS ext_table (
 	exchange	STRING
 	price		FLOAT
 	)
-	ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-	LOCATION '/data/stocks';
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'	
+LOCATION '/data/stocks';
+
+LOAD DATA LOCAL INPATH 'data_path'
+OVERWRITE INTO TABLE ext_table;
 ```
 
 ### 分区
@@ -216,6 +220,41 @@ INSERT OVERWRITE LOCAL DIRECTORY '/data/home/tmp/file'
 	SELECT * FROM a_table;
 
 ```
+
+### Join
+```
+# join = inner join
+# 如果表中的key有重复，例如下面的name在某个表中有重复值，join的结果也会有重复值
+select t1.name, t1.num, t2.sex from
+(select name, num from tmp_yzchen_test) t1
+inner join
+(select name, sex from tmp_yzchen_test_2) t2
+on t1.name = t2.name
+
+# left join = left outer join
+# 如果左表中的key右表没有，结果会是NULL
+select t1.name, t1.num, t2.sex from
+(select name, num from tmp_yzchen_test) t1
+left join
+(select name, sex from tmp_yzchen_test_2) t2
+on t1.name = t2.name
+
+# full join = full outer join
+# 结果为两边key的并集，没有匹配上的为NULL
+select t1.name, t1.num, t2.sex from
+(select name, num from tmp_yzchen_test) t1
+outer join
+(select name, sex from tmp_yzchen_test_2) t2
+on t1.name = t2.name
+
+# join
+# 笛卡尔join，没有on条件
+select t1.name, t1.num, t2.sex from
+(select name, num from tmp_yzchen_test) t1
+join
+(select name, sex from tmp_yzchen_test_2) t2
+```
+
 
 ### Functions
 
