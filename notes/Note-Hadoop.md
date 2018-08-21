@@ -229,6 +229,20 @@ add jar /usr/local/app/secure_jar/phc_udf.jar;
 create temporary function keybuilder as 'geodb.keybuilder';
 ```
 
+python udf
+```python
+#!python
+import sys
+
+for line in sys.stdin:
+	print('hello ' + line)
+```
+```sql
+ADD FILE /scripts/udf.py
+
+SELECT TRANSFORM(name) USING 'python /scripts/udf.py' AS hello FROM test_table;
+```
+
 ### 抽样
 
 ```sql
@@ -236,3 +250,19 @@ SELECT * FROM a_table TABLESAMPLE(BUCKET 3 OUT OF 10 ON rand());
 SELECT * FROM a_table TABLESAMPLE (0.1 PERCENT)
 ```
 
+
+### 时间
+
+```sql
+-- current timestamp
+SELECT UNIX_TIMESTAMP();
+-- from string to unix time
+SELECT UNIX_TIMESTAMP('2018-07-21', 'yyyy-MM-dd');
+-- from unix time to string
+SELECT FROM_UNIXTIME(1532102400, 'yyyy-MM-dd');
+
+--选取日期、年月日时分秒
+SELECT TO_DATE('2018-07-21 10:30:00');
+SELECT YEAR('2018-07-21 10:30:00');
+SELECT SECOND('2018-07-21 10:30:00');
+```

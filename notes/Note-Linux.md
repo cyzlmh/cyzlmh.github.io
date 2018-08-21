@@ -99,6 +99,9 @@ tags: Others
 | ~/.bash_profile          | A user's personal startup file for login shell sessions |
 | /etc/bash.bashrc         | A global configuration script that applies to all users for non-login shell sessions |
 | ~/.bashrc                | A user's personal startup file for non-login shell sessions |
+|                          |                                          |
+| tar -czvf X.tar.gz dir   | Compress and pack up                     |
+| tar -xzvf X.tar.gz dir   | Decompress and unpack                    |
 
 
 # File system
