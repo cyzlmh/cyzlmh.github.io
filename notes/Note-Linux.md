@@ -108,6 +108,27 @@ tags: Others
 
 ![File system](/assets/notes/Note-Linux/FileSystem.jpg)
 
+## Find files
+
+### find
+find <指定目录> <指定条件> <指定动作>
+find . -name 'filename'
+
+### locate
+locate dir/filename
+
+如果查找不到最新变动的文件
+updatedb
+
+### whereis
+whereis grep
+
+### which
+which greps
+
+## 文件内查找
+grep match_pattern file_name
+
 # vim
 
 | Command          | Result     |
@@ -152,7 +173,7 @@ $(cat some.txt)
 
 # here document
 command <<- _EOF_
-	text
+    text
 _EOF_
 ```
 
@@ -160,19 +181,19 @@ _EOF_
 
 ```shell
 function name {
-	commands
-	return
+    commands
+    return
 }
 name () {
-	commands
-	return
+    commands
+    return
 }
 
 # local variable
 function name {
-	local var
-	var=2
-	return
+    local var
+    var=2
+    return
 }
 ```
 
@@ -183,11 +204,11 @@ function name {
 ```shell
 x=5
 if [ $x -eq 5 ]; then
-	echo "x equals 5."
+    echo "x equals 5."
 elif [ $x -eq 4 ]; then
-	echo "x equals 4."
+    echo "x equals 4."
 else
-	echo "x does not equal 5 or 4."
+    echo "x does not equal 5 or 4."
 fi
 ```
 
@@ -217,13 +238,13 @@ fi
 
 ```shell
 if ((INT < 0)); then
-	echo "here"
+    echo "here"
 elif (( ((INT % 2)) == 0)); then
-	echo "here"
+    echo "here"
 elif (( ((INT % 2)) == 0 && ((INT % 3)) == 0 )); then
-	echo "here"
+    echo "here"
 else
-	echo "here"
+    echo "here"
 fi
 ```
 
@@ -255,14 +276,14 @@ command1 || command2
 ```shell
 read -p
 case $REPLY in
-	0)	echo "zero"
-		;;
-	1)	echo "one"
-		;;
-	2)	echo "two"
-		;;
-	*)	echo "other"
-		;;
+    0)    echo "zero"
+        ;;
+    1)    echo "one"
+        ;;
+    2)    echo "two"
+        ;;
+    *)    echo "other"
+        ;;
 esac
 ```
 
@@ -271,8 +292,8 @@ esac
 ```shell
 count=1
 while [[ $count -le 5 ]]; do 
-	echo $count 
-	count=$((count + 1)) 
+    echo $count 
+    count=$((count + 1)) 
 done
 ```
 
@@ -280,7 +301,7 @@ done
 
 ```shell
 for (( i=0; i<5; i=i+1 )); do 
-	echo $i
+    echo $i
 done
 ```
 

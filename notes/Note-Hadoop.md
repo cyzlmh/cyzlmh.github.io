@@ -269,13 +269,15 @@ create temporary function keybuilder as 'geodb.keybuilder';
 ```
 
 python udf
+
 ```python
 #!python
 import sys
 
 for line in sys.stdin:
-	print('hello ' + line)
+    print('hello ' + line)
 ```
+
 ```sql
 ADD FILE /scripts/udf.py
 
@@ -288,7 +290,6 @@ SELECT TRANSFORM(name) USING 'python /scripts/udf.py' AS hello FROM test_table;
 SELECT * FROM a_table TABLESAMPLE(BUCKET 3 OUT OF 10 ON rand());
 SELECT * FROM a_table TABLESAMPLE (0.1 PERCENT)
 ```
-
 
 ### 时间
 
@@ -304,4 +305,49 @@ SELECT FROM_UNIXTIME(1532102400, 'yyyy-MM-dd');
 SELECT TO_DATE('2018-07-21 10:30:00');
 SELECT YEAR('2018-07-21 10:30:00');
 SELECT SECOND('2018-07-21 10:30:00');
+```
+
+## 调优
+
+### hive内存设置
+
+```sql
+set mapreduce.map.memory.mb=8072;
+set mapreduce.map.java.opts=-Xmx6096m;
+set mapreduce.reduce.memory.mb=8072;
+set mapreduce.reduce.java.opts=-Xmx6096m;
+```
+
+### 数据倾斜
+
+1. 使用group by代替distinct操作
+
+```sql
+set hive.map.aggr = true;
+set hive.groupby.skewindata=true;
+```
+
+### Mapjoin
+
+```sql
+set hive.auto.convert.join=true; -- 自动转化为mapjoin
+set hive.auto.convert.join.use.nonstaged=true; -- 在不同阶段都可以使用mapjoin
+set hive.mapjoin.smalltable.filesize = 30000000; -- 设置mapjoin中表的大小最大为30M
+set hive.auto.convert.join.noconditionaltask=true; -- 是否将多个mapjoin合并为一个
+set hive.auto.convert.join.noconditionaltask.size=20971520; -- 多个mapjoin转换为一个时，所有小表的文件大小总和的最大值
+
+select
+/*+ MAPJOIN(t1)*/
+t1.k, t2.v2
+from
+(select k, v1 from table1) t1
+join
+(select k, v2 from table2) t2
+on t1.k = t2.k
+```
+
+## 其他设置
+
+```sql
+set hive.cli.print.header=true;
 ```
