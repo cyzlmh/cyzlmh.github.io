@@ -2,7 +2,7 @@
 layout: page
 title: Hadoop
 category: note
-tags: Others
+tags: Hadoop
 ---
 
 * content
@@ -189,23 +189,23 @@ STORED AS SEQUENCEFILE		# 以二进制编码储存
 
 ### 导入导出数据
 
-
 ```sql
 # 导入本地文件
 LOAD DATA LOCAL INPATH '${env:HOME}/data'
-	OVERWRITE INTO TABLE a_table
+    OVERWRITE INTO TABLE a_table
+
 
 # 导入HDFS文件，会移动，而不是复制数据
 LOAD DATA INPATH 'hdfs:path...'
-	OVERWRITE INTO TABLE a_table
+    OVERWRITE INTO TABLE a_table
 
 # 通过查询导入文件
 INSERT OVERWRITE TABLE a_table
-	SELECT cmn1, cmn2 FROM other_table;
-	
+    SELECT cmn1, cmn2 FROM other_table;
+    
 # 通过查询创建表
 CREATE TABLE a_table 
-	AS SELECT cmn1, cmn2 FROM other_table;
+    AS SELECT cmn1, cmn2 FROM other_table;
 
 # 导出到本地文件夹
 INSERT OVERWRITE LOCAL DIRECTORY '/data/home/tmp/file'
@@ -215,10 +215,10 @@ INSERT OVERWRITE DIRECTORY '/tmp/ds'
   SELECT cmn1, cmn2 FROM a_table；
 
 # 设置文件分隔符
+# 先根据文件格式设置表的分隔符，再导入文件到表内
 INSERT OVERWRITE LOCAL DIRECTORY '/data/home/tmp/file' 
-	ROW FORMAT DELIMITED FIELDS TERMINATED BY '|'
-	SELECT * FROM a_table;
-
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '|'
+    SELECT * FROM a_table;
 ```
 
 ### Join
