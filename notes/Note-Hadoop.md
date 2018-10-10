@@ -271,17 +271,23 @@ create temporary function keybuilder as 'geodb.keybuilder';
 python udf
 
 ```python
-#!python
+# assigning which python here is useless
 import sys
+
+with open("some_file", "r") as f:
+    # do not add the path while opening a file
+    pass
 
 for line in sys.stdin:
     print('hello ' + line)
 ```
 
 ```sql
-ADD FILE /scripts/udf.py
+add file /absolute/path/of/udf.py
+add file /other/resource/some_file -- every file used in the udf should be added
 
-SELECT TRANSFORM(name) USING 'python /scripts/udf.py' AS hello FROM test_table;
+-- just write 'python' here, assigning which python here will raise error
+select transform(name) using 'python udf.py' AS hello FROM test_table;
 ```
 
 ### 抽样
