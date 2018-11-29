@@ -8,7 +8,6 @@ tags: Others
 * content
 {:toc}
 
-
 # Command Line
 
 | command                  | result                                   |
@@ -25,6 +24,8 @@ tags: Others
 | ls                       | list directory contents                  |
 | file                     | print file information                   |
 | less                     | show text file                           |
+| cat /etc/os-release      | check linux version
+| du -h --max-depth=1      | show volumes
 |                          |                                          |
 | cp                       | copy files and directories               |
 | mv                       | move/rename files and directories        |
@@ -111,23 +112,28 @@ tags: Others
 ## Find files
 
 ### find
+
 find <指定目录> <指定条件> <指定动作>
 find . -name 'filename'
 
 ### locate
+
 locate dir/filename
 
 如果查找不到最新变动的文件
 updatedb
 
 ### whereis
+
 whereis grep
 
 ### which
-which greps
+
+which grep
 
 ## 文件内查找
-grep match_pattern file_name
+
+grep -E match_pattern file_name
 
 # vim
 
@@ -156,7 +162,7 @@ grep match_pattern file_name
 
 # Shell Script
 
-```shell
+``` shell
 # 文件头
 #!/bin/bash
 
@@ -179,7 +185,7 @@ _EOF_
 
 ## Function
 
-```shell
+``` shell
 function name {
     commands
     return
@@ -197,11 +203,11 @@ function name {
 }
 ```
 
-# Branching and Looping
+## Branching and Looping
 
-## IF
+### IF
 
-```shell
+``` shell
 x=5
 if [ $x -eq 5 ]; then
     echo "x equals 5."
@@ -212,7 +218,7 @@ else
 fi
 ```
 
-### File test
+#### File test
 
 | Expression          | True                                                     |
 | ------------------- | -------------------------------------------------------- |
@@ -221,7 +227,7 @@ fi
 | [ -f file ]         | file exists and is a regular file                        |
 | [ file1 -ef file2 ] | the two filenames refer to the same file by hard linking |
 
-### String test
+#### String test
 
 | Expression             | True                              |
 | ---------------------- | --------------------------------- |
@@ -234,9 +240,9 @@ fi
 | [[ string =~ regex ]]  | matched by the regular expression |
 | [[ string == *.txt ]]  | matched by the expansion          |
 
-### Integer test
+#### Integer test
 
-```shell
+``` shell
 if ((INT < 0)); then
     echo "here"
 elif (( ((INT % 2)) == 0)); then
@@ -248,7 +254,7 @@ else
 fi
 ```
 
-### Logit
+#### Logit
 
 | Expression           | Logit |
 | -------------------- | ----- |
@@ -256,14 +262,14 @@ fi
 | [[ exp1 \|\| exp2 ]] | or    |
 | [[ ! exp1 ]]         | not   |
 
-```shell
+``` shell
 # do command2 if command1 is sucessful
 command1 && command2
 # do command2 if command1 is unsucessful
 command1 || command2
 ```
 
-### Positional Paramaters
+#### Positional Paramaters
 
 - \$0：路径
   - dirname \$0：路径名
@@ -271,9 +277,9 @@ command1 || command2
 - \$1~\$9：输入参数
 - \$?：上一次退出状态，0为正常，其他为错误
 
-## CASE
+### CASE
 
-```shell
+``` shell
 read -p
 case $REPLY in
     0)    echo "zero"
@@ -287,9 +293,9 @@ case $REPLY in
 esac
 ```
 
-## WHILE
+### WHILE
 
-```shell
+``` shell
 count=1
 while [[ $count -le 5 ]]; do 
     echo $count 
@@ -297,11 +303,49 @@ while [[ $count -le 5 ]]; do
 done
 ```
 
-## FOR
+### FOR
 
-```shell
+``` shell
 for (( i=0; i<5; i=i+1 )); do 
     echo $i
 done
 ```
 
+## String Processing
+
+### replace
+
+``` shell
+tr 'old' 'new' file.txt
+```
+
+### delete
+
+``` shell
+tr -d 'to_delete'
+```
+
+### reverse
+
+``` shell
+rev "string"
+```
+
+### cut
+
+``` shell
+cut -c1- "string"
+```
+
+# Network
+
+``` shell
+# 查看网络配置
+ifconfig
+# 查看公网ip
+curl ifconfig.me
+# 远程登陆
+ssh username@ip_adress:port
+# 传文件
+scp file username@ip_adress:path
+```
