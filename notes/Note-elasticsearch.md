@@ -1,6 +1,14 @@
-# Elasticsearch
+---
+layout: page
+title: Elasticsearch
+category: note
+tags: Others
+---
 
-## Basic
+* content
+{:toc}
+
+# Basic
 
 ``` json
 GET /_cat/indices
@@ -99,7 +107,7 @@ POST /index/_search
 
 ```
 
-## Template of Common Task
+# Template of Common Task
 
 在ES中建立索引并定义类型
 
