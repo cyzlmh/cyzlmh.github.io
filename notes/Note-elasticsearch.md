@@ -6,6 +6,7 @@ tags: Others
 ---
 
 * content
+
 {:toc}
 
 # Basic
@@ -16,7 +17,6 @@ GET /_cat/indices
 GET /_cat/health
 
 GET /_cat/nodes
-
 ```
 
 create index with mappings
@@ -31,6 +31,7 @@ PUT /index_name
         "field_text": {"type": "text"},
         "field_date1": {"type": "date", "format": "epoch_second"},
         "field_date2": {"type": "date", "format": "yyyyMMdd"},
+        "field_location": {"type": "geo_point"},
         "field_int": {"type": "integer"},
         "field_bool": {"type": "boolean"},
         "field_float": {"type": "float"},
@@ -69,7 +70,7 @@ POST /_aliases
     {"add": {
       "index": "new_index",
       "alias": "index_alias"
-    }},
+    }}
   ]
 }
 
@@ -105,6 +106,56 @@ POST /index/_search
   }
 }
 
+POST /index/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {"term": {"field1": "keyword1"}},
+        {"term": {"field2": "keyword2"}}
+      ]
+    }
+  },
+  "aggs": {
+    "by_term": {
+      "terms": {"field": "filed3", "size": "10"},
+      "aggs": {"sum_per_field": {"sum":{"field": "field4"}}}
+    }
+  }
+}
+
+POST /index/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {"term": {"field1": "keyword1"}},
+        {"term": {"field2": "keyword2"}}
+      ]
+    }
+  },
+  "aggs": {
+    "by_date": {
+      "date_histogram": {"field": "ds", "interval": "day"},
+      "aggs": {"sum_per_day": {"sum":{"field": "field3"}}}
+    }
+  }
+}
+```
+
+range query
+
+``` json
+POST /index/_search
+{
+  "query": {
+    "bool": {
+      "filter": [
+        {"range": {"timestamp": {"gt": "now-4d/d", "lte": "now-3d/d"}}}
+      ]
+    }
+  }
+}
 ```
 
 # Template of Common Task
