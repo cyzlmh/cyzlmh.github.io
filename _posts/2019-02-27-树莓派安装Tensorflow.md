@@ -6,11 +6,11 @@ categories: post
 tags: raspberrypi
 ---
 
-# 使用Conda安装
+## 使用Conda安装
 
 * (已失败，Miniconda会将python3.5降级为3.4，而最新版tensorflow已经不支持python3.4)*
 
-## 安装Miniconda3
+### 安装Miniconda3
 
     ``` shell
     wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-armv7l.sh
@@ -31,7 +31,7 @@ tags: raspberrypi
     conda update conda
     ```
 
-# 使用pip安装
+## 使用pip安装
 
 1. 安装pip
 

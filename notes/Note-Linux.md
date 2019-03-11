@@ -135,6 +135,13 @@ which grep
 
 grep -E match_pattern file_name
 
+## 删除进程
+
+``` shell
+ps aux | grep [process_name]
+kill -9 [pid]
+```
+
 # vim
 
 | Command          | Result     |
