@@ -356,3 +356,7 @@ ssh username@ip_adress:port
 # 传文件
 scp file username@ip_adress:path
 ```
+
+# Tools
+
+- tldr: too long didn't read
