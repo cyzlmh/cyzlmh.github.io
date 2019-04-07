@@ -355,6 +355,17 @@ curl ifconfig.me
 ssh username@ip_adress:port
 # 传文件
 scp file username@ip_adress:path
+rsync -avz --remove-source-files -e "ssh -p $portNumber" user@remoteip:/path/to/files/ /local/path/
+```
+
+## Samba
+
+``` shell
+# show file shares
+smbclient -L //host -U username%password
+# connecting to a file shares
+smbclient //host/share_dir -U username%password
+
 ```
 
 # Tools

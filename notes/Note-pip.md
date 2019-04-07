@@ -16,6 +16,9 @@ pip install --upgrade pip
 
 # install package
 pip install numpy
+
+# check version
+pip freeze | grep [package_name]
 ```
 
 # conda
