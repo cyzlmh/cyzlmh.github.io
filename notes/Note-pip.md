@@ -16,6 +16,7 @@ pip install --upgrade pip
 
 # install package
 pip install numpy
+pip --proxy=hostname:port install requests
 
 # check version
 pip freeze | grep [package_name]
