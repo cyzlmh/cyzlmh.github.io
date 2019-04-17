@@ -8,8 +8,6 @@ tags: Hadoop
 * content
 {:toc}
 
-# Spark
-
 ## PySpark
 
 ### initialize and stop
