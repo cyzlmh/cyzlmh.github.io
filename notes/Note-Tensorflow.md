@@ -205,19 +205,78 @@ file_writer.close()
 ### sequential model
 
 ``` python
+import keras
 from keras.models import Sequential
-model = Sequential()
+from keras.layers import Dense
 
+(x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
+y_train = keras.utils.to_categorical(y_train)
+
+model = Sequential()
+model.add(Dense(100, activation='relu', input_shape=(28*28,)))
+model.add(Dense(100, activation='relu'))
+model.add(Dense(10, activation='softmax'))
+model.compile(loss='categorical_crossentropy', optimizer='rmsprop', metrics=['acc'])
+
+history = model.fit(x_train.reshape(-1, 28*28), y_train, validation_split=0.1, batch_size=32, epochs=10)
 ```
 
 ### general model
 
 ``` python
+import keras
+from keras.layers import Input, Dense
 from keras.models import Model
 
+(x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
+y_train = keras.utils.to_categorical(y_train)
+
+input_tensor = Input(shape=(28*28, ))
+x = Dense(100, activation='relu')(input_tensor)
+x = Dense(100, activation='relu')(x)
+output_tensor = Dense(10, activation='softmax')(x)
+model = Model(input_tensor, output_tensor)
+model.compile(loss='categorical_crossentropy', optimizer='rmsprop', metrics=['acc'])
+
+history = model.fit(x_train.reshape(-1, 28*28), y_train, validation_split=0.1, batch_size=32, epochs=10)
 ```
 
-## check GPU
+### Use Keras Layers in Tensorflow
+
+``` python
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras.layers import Dense
+
+x = tf.placeholder(name='x', shape=(None, 28*28), dtype=tf.float32)
+hidden1 = Dense(100, activation='relu')(x)
+hidden2 = Dense(100, activation='relu')(hidden1)
+output = Dense(10)(hidden2)
+
+y = tf.placeholder(tf.int64, shape=(None,))
+xentropy = tf.nn.sparse_softmax_cross_entropy_with_logits(labels=y, logits=output)
+loss = tf.reduce_mean(xentropy, name="loss")
+# train with tensorflow
+# ...
+```
+
+### Use Keras Model in Tensorflow
+
+``` python
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+model = Sequential()
+model.add(Dense(100, activation='relu', input_shape=(28*28,)))
+model.add(Dense(10, activation='softmax'))
+
+x = tf.placeholder(name='input', shape=(None, 28*28), dtype=tf.float32)
+y = model(x)
+```
+
+## Check GPU
 
 ``` shell
 # check if tensorflow is gpu version
