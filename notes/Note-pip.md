@@ -8,7 +8,7 @@ tags: Others
 * content
 {:toc}
 
-# pip
+## pip
 
 ``` shell
 # update
@@ -18,11 +18,14 @@ pip install --upgrade pip
 pip install numpy
 pip --proxy=hostname:port install requests
 
+# check packages
+pip list
+
 # check version
 pip freeze | grep [package_name]
 ```
 
-# conda
+## conda
 
 ``` shell
 # cheak version

@@ -7,6 +7,15 @@ permalink: /books/
 * content
 {:toc}
 
+201 Reading List
+---
+
+- 《Introduction to Probability》
+- 《社交天性》
+- 《非暴力沟通》
+- 《简明美国史》
+- 《Computer Network》
+
 2018 Reading List
 ---
 

@@ -8,7 +8,7 @@ tags: Others
 * content
 {:toc}
 
-# Git
+## Git
 
 ``` shell
 # Initialize
@@ -83,7 +83,7 @@ git rebase
 ```
 
 
-# Github
+## Github
 
 ``` shell
 # clone from github

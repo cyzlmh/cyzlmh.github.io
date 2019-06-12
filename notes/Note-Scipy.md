@@ -8,8 +8,7 @@ tags: Python
 * content
 {:toc}
 
-
-# Integrate
+## Integrate
 
 Import
 
@@ -25,9 +24,7 @@ def f(x, y):
 integrate.nquad(f, [[0, 1],[0, 1]])
 ```
 
-
-
-# Optimize
+## Optimize
 
 Import
 
@@ -41,8 +38,7 @@ Find root
 x = brentq(lambda x: x/exp(x)-k, 0, 1)
 ```
 
-
-# Statistics
+## Statistics
 
 Import
 
@@ -76,4 +72,3 @@ with plt.xkcd():
     plt.plot(x, expon_cdf(x))
     plt.axis([0, 4, 0, 1])
 ```
-

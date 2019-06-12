@@ -8,7 +8,7 @@ tags: Python
 * content
 {:toc}
 
-# Basic
+## Basic
 
 Import
 
@@ -125,7 +125,7 @@ ax.annotate('annotation',
     )
 ```
 
-# 3D
+## 3D
 
 ```python
 from mpl_toolkits.mplot3d import Axes3D
@@ -135,7 +135,7 @@ ax.plot_wireframe(XX, YY, ZZ)
 ax.plot_surface(XX, YY, ZZ)
 ```
 
-# Animation
+## Animation
 
 Import
 ```python
@@ -234,15 +234,17 @@ anim.save('anim.mp4', writer='ffmpeg', fps=30, dpi=40)
 anim.save('anim.gif', writer='imagemagick', fps=30, dpi=40)
 ```
 
-# Basemap
+## Basemap
 
 import
+
 ```python
 # import
 from mpl_toolkits.basemap import Basemap
 ```
 
 build projection
+
 ```python
 m = Basemap(llcrnrlon=-93.536379,
 	llcrnrlat=16.179933,
@@ -256,6 +258,7 @@ m = Basemap(llcrnrlon=-93.536379,
 ```
 
 project lon/lat to xx/yy
+
 ```python
 xx, yy = m(lon, lat)
 df['xx'] = df.apply(lambda x: m(x['lon'], x['lat'])[0], axis=1)
@@ -263,9 +266,9 @@ df['yy'] = df.apply(lambda x: m(x['lon'], x['lat'])[1], axis=1)
 ```
 
 draw map background
+
 ```python
 m.drawcoastlines(color='0.50', linewidth=0.6, zorder=0)
 m.fillcontinents(color='#f2efe8', alpha=0.8, zorder=0)
 m.drawmapboundary(fill_color='#b7d0cd', zorder=0)
 ```
-

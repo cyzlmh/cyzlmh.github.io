@@ -9,7 +9,7 @@ tags: Others
 
 {:toc}
 
-# Basic
+## Basic
 
 ``` json
 GET /_cat/indices
@@ -74,6 +74,24 @@ POST /_aliases
   ]
 }
 
+# Only one index per alias can be assigned to be the write index at a time
+# If no write index is specified and there are multiple indices referenced by an alias, then writes will not be allowed.
+
+POST /_aliases
+{
+  "actions":[
+    {"add": {
+      "index": "new_index",
+      "alias": "index_alias",
+      "is_write_index": true
+    }},
+    {"add": {
+      "index": "old_index",
+      "alias": "index_alias",
+      "is_write_index": false
+    }}
+  ]
+}
 ```
 
 query
@@ -158,7 +176,7 @@ POST /index/_search
 }
 ```
 
-# Template of Common Task
+## Template of Common Task
 
 在ES中建立索引并定义类型
 

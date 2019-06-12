@@ -9,14 +9,14 @@ tags: Python
 {:toc}
 
 
-# Import
+## Import
 
 ```python
 import pandas as pd
 from pandas import Series, DataFrame
 ```
 
-# IO
+## IO
 
 Read from file
 
@@ -37,7 +37,7 @@ df.to_csv('path/filename')
 df.to_pickle('path/filename')
 ```
 
-# Quick check
+## Quick check
 
 ```python
 df.head(num_of_row)
@@ -45,7 +45,7 @@ df.tail(num_of_row)
 df.describe()
 ```
 
-# Indexing
+## Indexing
 
 Set index
 
@@ -89,20 +89,20 @@ df.shift(i)
 (df + df.shift(-1) + df.shift(-2)) / 3
 ```
 
-# Sort
+## Sort
 
 ```python
 df.sort_index()
 df.sort_values(by='Country')
 ```
 
-# Binning
+## Binning
 
 ```python
 pd.cut(L, bin_num)
 ```
 
-# Groupby
+## Groupby
 
 ```
 df.groupby(col).mean()
@@ -113,12 +113,9 @@ Find the min row of the group
 df.loc[df.groupby(['Serial_Num']).apply(lambda x: x['Distance'].idxmin())]
 ```
 
-# Resample
+## Resample
 
 ```python
 df.resample('1D').max()		#max of one day
 df.resample('2M').mean()	#mean of two months
 ```
-
-
-

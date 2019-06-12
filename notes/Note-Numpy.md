@@ -8,8 +8,7 @@ tags: Python
 * content
 {:toc}
 
-
-# Basic
+## Basic
 
 Import
 
@@ -33,9 +32,7 @@ z = np.sin(xx**2 + yy**2) / (xx**2 + yy**2)
 h = plt.contourf(x,y,z)
 ```
 
-
-
-# Random
+## Random
 Generate random samples
 
 ```python
@@ -51,7 +48,6 @@ x = np.random.sample(n)
 x = np.random.random_sample(n)
 x = np.random.randf(n)
 ```
-
 
 Make random choice
 
@@ -76,4 +72,3 @@ Sample from a given distribution
 gb = np.random.gumbel(size=1000)
 plt.hist(gb, bins=20, histtype='step', normed=True, linewidth=1)
 ```
-

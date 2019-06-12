@@ -8,6 +8,8 @@ tags: Hadoop
 * content
 {:toc}
 
+## Basics
+
 ```shell
 # 查看hdfs文件系统
 hadoop fs -ls <dir>
