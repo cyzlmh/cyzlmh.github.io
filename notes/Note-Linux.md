@@ -135,6 +135,12 @@ which grep
 
 grep -E match_pattern file_name
 
+## 后台运行
+
+``` shell
+nohup command >/dev/null 2>&1 &
+```
+
 ## 删除进程
 
 ``` shell
