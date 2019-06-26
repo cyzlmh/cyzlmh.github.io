@@ -333,3 +333,92 @@ on t1.k = t2.k
 ```sql
 set hive.cli.print.header=true;
 ```
+
+## 自定义UDF
+
+### UDF
+
+``` java
+package yzchen;
+import org.apache.hadoop.hive.ql.exec.UDF;
+import java.io.UnsupportedEncodingException;
+
+public class MyUdf extends UDF {
+    public int evaluate(String myInput) throws UnsupportedEncodingException {
+        int result = 0;
+        return result;
+    }
+}
+```
+
+### UDTF
+
+每一行输入可以返回0-N行的函数，与explode函数类似
+
+``` java
+package yzchen;
+import org.apache.hadoop.hive.ql.udf.generic.GenericUDTF;
+import org.apache.hadoop.hive.ql.exec.UDFArgumentException;
+import org.apache.hadoop.hive.ql.exec.UDFArgumentLengthException;
+import org.apache.hadoop.hive.ql.metadata.HiveException;
+import org.apache.hadoop.hive.serde2.objectinspector.ObjectInspector;
+import org.apache.hadoop.hive.serde2.objectinspector.ObjectInspectorFactory;
+import org.apache.hadoop.hive.serde2.objectinspector.StructObjectInspector;
+import org.apache.hadoop.hive.serde2.objectinspector.primitive.PrimitiveObjectInspectorFactory;
+import java.util.ArrayList;
+import java.util.HashSet;
+
+public class MyUdtf extends GenericUDTF {
+
+    // 在initialize()方法中指定输入输出参数
+    @Override
+    public StructObjectInspector initialize(ObjectInspector[] args) throws UDFArgumentException {
+        // 检查输入参数个数
+        if (args.length != 1) {
+            throw new UDFArgumentLengthException("UDTF takes only one argument");
+        }
+        // 检查输入参数类型
+        if (args[0].getCategory() != ObjectInspector.Category.PRIMITIVE) {
+            throw new UDFArgumentException("UDTF takes string as a parameter");
+        }
+
+        ArrayList<String> fieldNames = new ArrayList<String>();
+        ArrayList<ObjectInspector> fieldOIs = new ArrayList<ObjectInspector>();
+        // 定义输出格式
+        fieldNames.add("col1");
+        fieldOIs.add(PrimitiveObjectInspectorFactory.javaStringObjectInspector);
+        fieldNames.add("col2");
+        fieldOIs.add(PrimitiveObjectInspectorFactory.javaStringObjectInspector);
+        // 返回返回行的个数与类型
+        return ObjectInspectorFactory.getStandardStructObjectInspector(fieldNames, fieldOIs);
+    }
+
+    // process()方法中定义处理过程，每一次forward()产生一行，如果输出是多列则返回一个数组
+    @Override
+    public void process(Object[] args) throws HiveException {
+        String input = args[0].toString();
+        String[] arr = input.split("\t");
+        for (String s: arr) {
+            String[] result = {"hello,", s};
+            forward(result);
+        }
+    }
+
+    // close()方法对需要清理的函数进行清理
+    @Override
+    public void close() throws HiveException {
+        // do nothing
+    }
+}
+```
+
+使用方法
+
+``` sql
+-- 直接使用
+select MyUdtf(name) as (col1, col2) from src_table;
+
+-- 结合lateral view
+select src_table.num, tmp_table.col1, tmp_table.col2
+from src_table lateral view MyUdtf(name) tmp_table as col1, col2;
+```
