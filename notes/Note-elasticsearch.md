@@ -97,9 +97,10 @@ POST /_aliases
 query
 
 ``` json
-POST /index/_search
+GET /index/_search
 {
   "size": 10,
+  "query"{
     "bool": {
       "must": [
         {"term": {"field1": "keyword1"}},
@@ -109,7 +110,7 @@ POST /index/_search
   }
 }
 
-POST /index/_search
+GET /index/_search
 {
   "query": {
     "bool": {
@@ -124,7 +125,7 @@ POST /index/_search
   }
 }
 
-POST /index/_search
+GET /index/_search
 {
   "query": {
     "bool": {
@@ -142,7 +143,7 @@ POST /index/_search
   }
 }
 
-POST /index/_search
+GET /index/_search
 {
   "query": {
     "bool": {
@@ -164,12 +165,28 @@ POST /index/_search
 range query
 
 ``` json
-POST /index/_search
+GET /index/_search
 {
   "query": {
     "bool": {
       "filter": [
         {"range": {"timestamp": {"gt": "now-4d/d", "lte": "now-3d/d"}}}
+      ]
+    }
+  }
+}
+```
+
+delete by query
+
+``` json
+POST /index/_doc/_delete_by_query
+{
+  "query": {
+    "bool": {
+      "must": [
+        {"term": {"field1": "keyword1"}},
+        {"term": {"field2": "keyword2"}}
       ]
     }
   }
