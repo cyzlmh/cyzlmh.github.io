@@ -107,7 +107,8 @@ GET /index/_search
         {"term": {"field2": "keyword2"}}
       ]
     }
-  }
+  },
+  "sort": [{"field1":{ "order":"asc"}}]
 }
 
 GET /index/_search

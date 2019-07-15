@@ -138,7 +138,21 @@ grep -E match_pattern file_name
 ## 后台运行
 
 ``` shell
+# nohup
 nohup command >/dev/null 2>&1 &
+
+# systemd
+sudo /bin/systemctl daemon-reload
+sudo /bin/systemctl enable service-name.service
+sudo systemctl start service-name.service
+
+# list enabled services
+systemctl list-unit-files | grep enabled
+
+# remove service
+sudo systemctl stop service-name
+sudo systemctl disable service-name
+rm /etc/systemd/system/service-name
 ```
 
 ## 删除进程
